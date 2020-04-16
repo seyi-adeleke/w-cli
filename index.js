@@ -1,16 +1,24 @@
-const argv = require('yargs').array(cliFlag).argv
-
+require('dotenv').config();
 const cliFlag = 'c';
+const displayCityTimeAndWeather = require('./displayCityTimeAndWeather');
+const argv = require('yargs').array(cliFlag).argv
 const citiesList = argv[cliFlag];
 
-const fetchCityTimeAndWeather = (city) => {
 
+const GREEN = "\x1b[32m";
+const RED = "\x1b[31m";
+
+if (!process.env.OPEN_WEATHER_API_KEY) {
+    console.log(RED, 'Please Add the open Weather Api Key', '\x1b[0m')
 }
 
 
-const log = [];
-citiesList.forEach((city) => {
-    log.push(fetchCityTimeAndWeather(city));
-})
+if (!citiesList.length) {
+    console.log(RED, 'Please Add a list of cities', '\x1b[0m')
+}
 
-return city;
+citiesList.forEach(city => {
+    displayCityTimeAndWeather(city)
+        .then(res => (console.log(GREEN, res, '\x1b[0m')))
+        .catch((error) => console.log(RED, error, '\x1b[0m'));
+});
