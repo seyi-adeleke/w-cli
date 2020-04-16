@@ -5,7 +5,7 @@ The current Weather recorded at ${time} in ${city} is ${weather} - ${description
 `
 const BASE_OPEN_WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
-const parseUrlForCity = (city) => `${BASE_OPEN_WEATHER_URL}?q=${city}&APPID=${process.env.OPEN_WEATHER_API_KEY}`
+const parseOpenWeatherUrlForCity = (city, apikey=process.env.OPEN_WEATHER_API_KEY) => `${BASE_OPEN_WEATHER_URL}?q=${city}&APPID=${apikey}`;
 
 const fetchData = async (url) => {
     const response = await axios.get(url);
@@ -31,5 +31,5 @@ module.exports = {
     parseUrlForCity,
     fetchData,
     formatUnixDate,
-    getDisplayMessage,
+    parseOpenWeatherUrlForCity,
 }

@@ -4,7 +4,7 @@
   "description": "weather logger",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "mocha tests/**.spec.js"
   },
   "author": "Seyi Adeleke",
   "license": "ISC",
@@ -12,5 +12,9 @@
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "yargs": "^15.3.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1"
   }
 }

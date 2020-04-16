@@ -1,9 +1,8 @@
 const utils = require('./utils');
 
-
 const displayCityTimeAndWeather = async (city) => {
     try {
-        const url = utils.parseUrlForCity(city)
+        const url = utils.parseOpenWeatherUrlForCity(city)
         const cityData = await utils.fetchData(url);
         const displayMessage = utils.getDisplayMessage({
             time: cityData.dt,
