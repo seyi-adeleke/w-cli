@@ -7,18 +7,19 @@ const citiesList = argv[cliFlag];
 
 const GREEN = "\x1b[32m";
 const RED = "\x1b[31m";
+const CLEAR = "\x1b[0m";
 
 if (!process.env.OPEN_WEATHER_API_KEY) {
-    console.log(RED, 'Please Add the open Weather Api Key', '\x1b[0m')
+    console.log(RED, 'Please Add the open Weather Api Key', CLEAR)
 }
 
 
 if (!citiesList.length) {
-    console.log(RED, 'Please Add a list of cities', '\x1b[0m')
+    console.log(RED, 'Please Add a list of cities', CLEAR)
 }
 
 citiesList.forEach(city => {
     displayCityTimeAndWeather(city)
-        .then(res => (console.log(GREEN, res, '\x1b[0m')))
-        .catch((error) => console.log(RED, error, '\x1b[0m'));
+        .then(res => (console.log(GREEN, res, CLEAR)))
+        .catch((error) => console.log(RED, error, CLEAR));
 });
